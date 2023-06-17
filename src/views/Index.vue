@@ -1,10 +1,14 @@
 <template>
- <router-view />
+  Index
 </template>
 
 <script>
 export default {
-  name:'App'
+  setup() {
+
+
+    return {}
+  }
 }
 </script>
 
