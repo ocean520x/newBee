@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <el-container class="container">
+    <el-container v-if="state.showMenu" class="container">
       <el-aside class="aside">
         <!--系统名称+logo-->
         <div class="head">
@@ -44,18 +44,30 @@
         <Footer/>
       </el-container>
     </el-container>
+    <el-container v-else class="container">
+      <router-view/>
+    </el-container>
   </div>
 
 </template>
 
-<script>
+<script setup>
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import {Odometer,Plus} from '@element-plus/icons-vue'
-export default {
-  name: 'App',
-  components: {Header, Footer,Odometer,Plus}
-}
+import {useRouter} from "vue-router";
+import {reactive} from "vue";
+
+//不需要菜单的路径数组
+const noMenu=['/login']
+const router=useRouter()
+const state=reactive({
+  showMenu:true//是否显示菜单
+})
+//监听路由的变化
+router.beforeEach(to=>{
+  state.showMenu=!noMenu.includes(to.path)
+})
 </script>
 
 <style lang="scss" scoped>
