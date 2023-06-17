@@ -21,15 +21,21 @@
             <el-menu-item-group>
               <el-menu-item index="/">
                 <el-icon>
-                  <DataLine />
+                  <Odometer />
                 </el-icon>
                 首页
+              </el-menu-item>
+              <el-menu-item index="/add">
+                <el-icon>
+                  <Plus />
+                </el-icon>
+                添加商品
               </el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
         </el-menu>
       </el-aside>
-<!-- 右边内容布局-->
+      <!-- 右边内容布局-->
       <el-container class="content">
         <Header/>
         <div class="main">
@@ -43,11 +49,12 @@
 </template>
 
 <script>
-import Header from'@/components/Header.vue'
+import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
+import {Odometer,Plus} from '@element-plus/icons-vue'
 export default {
   name: 'App',
-  components:{Header,Footer}
+  components: {Header, Footer,Odometer,Plus}
 }
 </script>
 
@@ -93,14 +100,16 @@ export default {
   border-top: 1px solid hsla(0, 0%, 100%, .05);
   border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
+
 .content {
   display: flex;
   flex-direction: column;
   max-height: 100vh;
   overflow: hidden;
 }
+
 .main {
-  height: 100vh;
+  height: calc(100vh - 100px);
   overflow: auto;
   padding: 10px;
 }
