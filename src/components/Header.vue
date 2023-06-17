@@ -11,13 +11,9 @@
 
 import {useRouter} from "vue-router";
 import {reactive} from "vue";
+import {pathMap} from "@/utils/index.js";
 //获取路由实例
 const router = useRouter()
-//声明路由和title对应的键值对
-const pathMap = {
-  index: '首页',
-  add: '添加商品'
-}
 const state = reactive({
   name: '首页'
 })
@@ -25,8 +21,8 @@ const state = reactive({
 router.afterEach(to => {
   console.log(to)
   //to能获取到路由相关信息
-  const {id}=to.query
-  state.name=pathMap[to.name]
+  const {id} = to.query
+  state.name = pathMap[to.name]
 })
 </script>
 

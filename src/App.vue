@@ -57,6 +57,7 @@ import Footer from '@/components/Footer.vue'
 import {Odometer,Plus} from '@element-plus/icons-vue'
 import {useRouter} from "vue-router";
 import {reactive} from "vue";
+import {localGet, pathMap} from "@/utils/index.js";
 
 //不需要菜单的路径数组
 const noMenu=['/login']
@@ -65,8 +66,18 @@ const state=reactive({
   showMenu:true//是否显示菜单
 })
 //监听路由的变化
-router.beforeEach(to=>{
-  state.showMenu=!noMenu.includes(to.path)
+router.beforeEach((to,from,next)=>{
+  if(to.path==='/login'){
+    next()
+  }else {
+    if(!localGet('token')){
+      next('/login')
+    }else {
+      next()
+    }
+  }
+  state.showMenu=!noMenu.includes(to.path)&&localGet('token')
+  document.title=pathMap[to.name]
 })
 </script>
 
