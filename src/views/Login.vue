@@ -86,7 +86,7 @@ const resetForm = () => {
   height: 500px;
   background-color: #fff;
   border-radius: 4px;
-  box-shadow: 0px 21px 41px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 21px 41px 0 rgba(0, 0, 0, 0.2);
 }
 .head {
   display: flex;
