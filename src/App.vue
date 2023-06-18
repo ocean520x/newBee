@@ -11,7 +11,7 @@
         </div>
         <!-- 一条为了美观的线条-->
         <div class="line"></div>
-        <el-menu background-color="#222832" text-color="#fff" :router="true">
+        <el-menu background-color="#222832" text-color="#fff" :router="true" :default-openeds="state.defaultOpen" :default-active="state.currentPath">
           <!-- 一级栏目-->
           <el-sub-menu index="1">
             <template #title>
@@ -31,6 +31,14 @@
                 </el-icon>
                 添加商品
               </el-menu-item>
+            </el-menu-item-group>
+          </el-sub-menu>
+          <el-sub-menu index="2">
+            <template #title>
+              <span>首页配置</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="/swiper"><el-icon><Picture /></el-icon>轮播图配置</el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
         </el-menu>
@@ -63,7 +71,9 @@ import {localGet, pathMap} from "@/utils/index.js";
 const noMenu=['/login']
 const router=useRouter()
 const state=reactive({
-  showMenu:true//是否显示菜单
+  showMenu:true,//是否显示菜单,
+  defaultOpen:['1','2'],
+  currentPath:'/'
 })
 //监听路由的变化
 router.beforeEach((to,from,next)=>{
@@ -77,6 +87,7 @@ router.beforeEach((to,from,next)=>{
     }
   }
   state.showMenu=!noMenu.includes(to.path)&&localGet('token')
+  state.currentPath=to.path
   document.title=pathMap[to.name]
 })
 </script>
