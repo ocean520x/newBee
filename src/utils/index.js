@@ -14,7 +14,6 @@ export const localSet = (key, value) => {
 export const localRemove = (key) => {
     window.localStorage.removeItem(key)
 }
-
 //声明路由和title对应的键值对
 export const pathMap = {
     index: '首页',

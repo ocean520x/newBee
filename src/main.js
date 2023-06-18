@@ -18,6 +18,7 @@ import {
     ElTag,
     ElCard,
     ElTable,
+    ElTableColumn,
     ElUpload,
     ElDialog,
     ElPagination
@@ -28,4 +29,4 @@ const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
 }
-app.use(router).use(ElButton).use(ElContainer).use(ElAside).use(ElMenu).use(ElSubMenu).use(ElMenuItemGroup).use(ElMenuItem).use(ElForm).use(ElFormItem).use(ElInput).use(ElCheckbox).use(ElMessage).use(ElPopover).use(ElTag).use(ElCard).use(ElTable).use(ElUpload).use(ElDialog).use(ElPagination).mount('#app')
+app.use(router).use(ElButton).use(ElContainer).use(ElAside).use(ElMenu).use(ElSubMenu).use(ElMenuItemGroup).use(ElMenuItem).use(ElForm).use(ElFormItem).use(ElInput).use(ElCheckbox).use(ElMessage).use(ElPopover).use(ElTag).use(ElCard).use(ElTable).use(ElUpload).use(ElDialog).use(ElPagination).use(ElTableColumn).mount('#app')
